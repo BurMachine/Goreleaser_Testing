@@ -34,6 +34,16 @@ snapshot:
   name_template: "{{ incpatch .Version }}-next"
 signs:
   - artifacts: checksum
+    args:
+      # if you are using this is a GitHub action or some other automated pipeline, you
+      # need to pass the batch flag to indicate its not interactive.
+      - "--batch"
+      - "--local-user"
+      - "{{ .Env.GPG_FINGERPRINT }}" # set this environment variable for your signing key
+      - "--output"
+      - "${signature}"
+      - "--detach-sign"
+      - "${artifact}"
 changelog:
   sort: asc
   filters:
