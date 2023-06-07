@@ -3,5 +3,5 @@ package main
 import "log"
 
 func main() {
-	log.Println("Goreleaser test1")
+	log.Println("Goreleaser test2")
 }
